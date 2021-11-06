@@ -20,13 +20,13 @@ import io.graypart.library.utils.Utils
 class AppsflyerManager(private val context: Context, private val appsDevKey: String):
     RemoteListenerCallback {
 
-   private lateinit var appsflyerListenerCallback: AppsflyerListenerCallback
+    private lateinit var appsflyerListenerCallback: AppsflyerListenerCallback
 
     fun start(offerUrl: String) {
 
         appsflyerListenerCallback = context as AppsflyerListenerCallback
 
-      //  if (LOG) Log.d(TAG, "got apps Data - method invoked")
+        //  if (LOG) Log.d(TAG, "got apps Data - method invoked")
         val conversionDataListener = object : AppsFlyerConversionListener {
             override fun onConversionDataSuccess(data: MutableMap<String, Any>?) {
                 data?.let { cvData ->
@@ -51,13 +51,12 @@ class AppsflyerManager(private val context: Context, private val appsDevKey: Str
                                         data["campaign"].toString(),
                                         context, data["af_c_id"].toString(),
                                         data["media_source"].toString(),
-                                        data["advertising_id"].toString()
                                     )
 
 
                                     if (LOG) Log.d(TAG, "$url -- final url")
                                     AppsProjector.createRepoInstance(context).insert(Link(1, url))
-                                 //   if (LOG) Log.d(TAG, "added to viewmodel number 1")
+                                    //   if (LOG) Log.d(TAG, "added to viewmodel number 1")
                                     appsflyerListenerCallback.onConversionDataSuccess(data, url)
 
                                 } else {
@@ -69,9 +68,9 @@ class AppsflyerManager(private val context: Context, private val appsDevKey: Str
                                             "&af_status=" + "Organic" +
                                             "&afToken=" + appsDevKey +
                                             "&afid=" + AppsFlyerLib.getInstance().getAppsFlyerUID(context)
-                                  //  if (LOG) Log.d(TAG, "url - $url")
+                                    //  if (LOG) Log.d(TAG, "url - $url")
                                     AppsProjector.createRepoInstance(context).insert(Link(1, url))
-                                  //  if (LOG) Log.d(TAG, "added to viewmodel number 2")
+                                    //  if (LOG) Log.d(TAG, "added to viewmodel number 2")
                                     appsflyerListenerCallback.onConversionDataSuccess(data, url)
                                 }
                             }
@@ -129,6 +128,15 @@ class AppsflyerManager(private val context: Context, private val appsDevKey: Str
     }
 
     override fun nonFirstLaunch(url: String) {
+
+    }
+
+    override fun onDeepLinkSuccess(
+        fbappid: String,
+        fbappsecret: String,
+        offerUrl: String,
+        naming: String
+    ) {
 
     }
 

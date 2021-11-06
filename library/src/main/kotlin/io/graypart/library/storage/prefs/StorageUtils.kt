@@ -22,31 +22,6 @@ class StorageUtils {
             )
 
 
-        fun setLastUrl(name: String, lastUrl: String) {
-            sharedPrefs.put(name, lastUrl)
-        }
-
-        fun getLastUrl(name: String): String? {
-            return sharedPrefs.getString(name)
-        }
-
-        fun setAdId(name: String, tag: String) {
-            sharedPrefs.put(name, tag)
-        }
-
-        fun getAdId(name: String): String {
-            return sharedPrefs.getString(name).toString()
-        }
-
-
-        fun setADID(name: String, adid: String) {
-            sharedPrefs.put(name, adid)
-        }
-
-        fun getADID(name: String): String {
-            return sharedPrefs.getString(name).toString()
-        }
-
         fun setOnConversionDataSuccess(name: String, flag: String) {
             sharedPrefs.put(name, flag)
         }
@@ -55,76 +30,12 @@ class StorageUtils {
             return sharedPrefs.getString(name).toString()
         }
 
-        fun setOneSignalID(name: String, id: String) {
-            sharedPrefs.put(name, id)
+        fun setOnDeepLinkDataSuccess(name: String, flag: String){
+            sharedPrefs.put(name, flag)
         }
 
-        fun getOneSignalID(name: String): String {
+        fun getOnDeepLinkDataSuccess(name: String): String{
             return sharedPrefs.getString(name).toString()
-        }
-
-        fun setAppsUID(name: String, id: String) {
-            sharedPrefs.put(name, id)
-        }
-
-        fun getAppsUID(name: String): String {
-            return sharedPrefs.getString(name).toString()
-        }
-
-        fun setState(name: String, state: String) {
-            sharedPrefs.put(name, state)
-        }
-
-        fun getState(name: String): String? {
-            return sharedPrefs.getString(name)
-        }
-
-        fun setAppsUrl(name: String, url: String) {
-            sharedPrefs.put(name, url)
-        }
-
-        fun getAppsUrl(name: String): String? {
-            return sharedPrefs.getString(name)
-        }
-
-        fun setBaseUrl(name: String, url: String) {
-            sharedPrefs.put(name, url)
-        }
-
-        fun getBaseUrl(name: String): String? {
-            return sharedPrefs.getString(name)
-        }
-
-        fun setRemoteLink(name: String, link: String) {
-            sharedPrefs.put(name, link)
-        }
-
-        fun getRemoteLink(name: String): String {
-            return sharedPrefs.getString(name).toString()
-        }
-
-        fun setAppsFlyerId(name: String, id: String) {
-            sharedPrefs.put(name, id)
-        }
-
-        fun getAppsFlyerId(name: String): String {
-            return sharedPrefs.getString(name).toString()
-        }
-
-        fun setPartOfUrl(name: String, partoflink: String) {
-            sharedPrefs.put(name, partoflink)
-        }
-
-        fun getPartOfLink(name: String): String {
-            return sharedPrefs.getString(name).toString()
-        }
-
-        fun setAppsFlyerState(name: String, state: String) {
-            sharedPrefs.put(name, state)
-        }
-
-        fun getAppsFlyerState(name: String): String? {
-            return sharedPrefs.getString(name)
         }
 
 

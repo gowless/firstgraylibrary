@@ -4,14 +4,6 @@ package io.graypart.library
 object Constants {
 
 
-    /**
-     * НЕОБХОДИМО ИЗМЕНИТЬ
-     */
-
-    /**
-     * части ссылки
-     */
-    var part1 = ""
 
 
     //appsflyer
@@ -42,19 +34,8 @@ object Constants {
      */
 
 
-    val PARTOFLINK = "partoflink"
-
-    val ADID = "adid"
-
-    val LASTLINK = "lastlink"
-
     val ONCONVERSION = "conversion"
-
-
-    val APPSURL = "appsurl"
-
-
-    val APPSFLYERSTATE = "appsflyerstate"
+    val ONDEEPLINK = "deep"
 
 
     /**
@@ -63,13 +44,6 @@ object Constants {
     //true tag
     val TRUE = "true"
 
-    //false tag
-    val FALSE = "false"
-
-
-    /**
-     * тег для тестов
-     */
     val TAG = "testing"
 
 }
