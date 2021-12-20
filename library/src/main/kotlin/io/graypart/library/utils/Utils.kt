@@ -39,7 +39,7 @@ class Utils {
         //test1||sub1()test||sub2()test2
 
         fun getFinalUrl(baseUrl: String, naming: String, context: Context, campaignId: String, mediaSource: String): String {
-            return baseUrl + "?" + "sub12=" + getAppBundle(context) +
+            return baseUrl + "?" + "app_id=" + getAppBundle(context) +
                     "&afToken=" + appsDevKey +
                     "&afid=" + AppsFlyerLib.getInstance().getAppsFlyerUID(context) +
                     "&sub11=" + campaignId +
