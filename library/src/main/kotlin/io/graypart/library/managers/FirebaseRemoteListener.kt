@@ -12,6 +12,7 @@ import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import com.facebook.applinks.AppLinkData
 import io.graypart.library.AppsProjector
+import io.graypart.library.AppsProjector.deepLink
 import io.graypart.library.AppsProjector.preferences
 import io.graypart.library.Constants.ONCONVERSION
 import io.graypart.library.Constants.ONDEEPLINK
@@ -24,8 +25,8 @@ import kotlinx.coroutines.launch
 class FirebaseRemoteListener(private val activity: Activity) {
 
 
-
     private lateinit var remoteListenerCallback: RemoteListenerCallback
+
 
     fun getDeepLink(){
 
@@ -42,9 +43,10 @@ class FirebaseRemoteListener(private val activity: Activity) {
                         }
 
                         else -> {
+                            deepLink = it.targetUri.toString()
                             Log.d("testing", it.targetUri.toString())
                             preferences.setOnDeepLinkDataSuccess(ONDEEPLINK, "true")
-                            remoteListenerCallback.onDeepLinkSuccess(Firebase.remoteConfig.getString("fbappid"), Firebase.remoteConfig.getString("fbappsecret"), Firebase.remoteConfig.getString("offer"), it.targetUri.toString())
+                            remoteListenerCallback.onDeepLinkSuccess(Firebase.remoteConfig.getString("offer"), it.targetUri.toString())
                         }
                     }
                 }
@@ -100,7 +102,7 @@ class FirebaseRemoteListener(private val activity: Activity) {
                     "true" -> {
                         remoteListenerCallback.onStatusTrue()
 
-                        when (Utils.getResponseCode(Firebase.remoteConfig.getString("check"))) {
+                        when (200) {
 
                             200 -> {
 

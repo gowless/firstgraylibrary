@@ -12,7 +12,8 @@ import io.graypart.library.storage.prefs.StorageUtils
 
 object AppsProjector {
 
-
+    var data: MutableMap<String, Any>? = mutableMapOf()
+    var deepLink: String = "null"
     lateinit var preferences: StorageUtils.Preferences
     var repository: Repository? = null
 

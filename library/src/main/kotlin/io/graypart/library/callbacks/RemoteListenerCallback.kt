@@ -12,5 +12,5 @@ interface RemoteListenerCallback {
 
     fun nonFirstLaunch(url: String)
 
-    fun onDeepLinkSuccess(fbappid: String, fbappsecret: String, offerUrl: String, naming: String)
+    fun onDeepLinkSuccess(offerUrl: String, deep: String)
 }
