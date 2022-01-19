@@ -22,20 +22,19 @@ import io.graypart.library.storage.persistroom.model.Link
 import io.graypart.library.utils.Utils
 import java.util.*
 
-class AppsflyerManager(private val context: Context, private val appsDevKey: String):
+class AppsflyerManager(private val activity: AppCompatActivity, private val appsDevKey: String):
     RemoteListenerCallback {
 
     private lateinit var appsflyerListenerCallback: AppsflyerListenerCallback
 
     fun start(offerUrl: String) {
 
-        appsflyerListenerCallback = context as AppsflyerListenerCallback
+        appsflyerListenerCallback = activity as AppsflyerListenerCallback
 
         //  if (LOG) Log.d(TAG, "got apps Data - method invoked")
         val conversionDataListener = object : AppsFlyerConversionListener {
             override fun onConversionDataSuccess(data: MutableMap<String, Any>?) {
                 data?.let { cvData ->
-                    cvData.map {
                         if (LOG) Log.d(TAG, "got apps Data - succes conversion")
                         when (preferences.getOnConversionDataSuccess(ONCONVERSION)) {
                             "null" -> {
@@ -50,11 +49,11 @@ class AppsflyerManager(private val context: Context, private val appsDevKey: Str
                                             part1 + part2 + part3, data["campaign"].toString(), context))
                                      */
 
-                                    val url = concatName(data,"null", activity = context as AppCompatActivity, offerUrl = Firebase.remoteConfig.getString("offer"))
+                                    val url = concatName(data,"null", activity = activity as AppCompatActivity, offerUrl = Firebase.remoteConfig.getString("offer"))
 
 
                                     if (LOG) Log.d(TAG, "$url -- final url")
-                                    AppsProjector.createRepoInstance(context).insert(Link(1, url))
+                                    AppsProjector.createRepoInstance(activity).insert(Link(1, url))
                                     //   if (LOG) Log.d(TAG, "added to viewmodel number 1")
                                     appsflyerListenerCallback.onConversionDataSuccess(data, url)
 
@@ -71,7 +70,6 @@ class AppsflyerManager(private val context: Context, private val appsDevKey: Str
                         }
 
 
-                    }
                 }
             }
 
@@ -91,8 +89,8 @@ class AppsflyerManager(private val context: Context, private val appsDevKey: Str
             }
         }
         //инициализируем SDK AppsFlyer'a
-        AppsFlyerLib.getInstance().init(appsDevKey, conversionDataListener, context)
-        AppsFlyerLib.getInstance().start(context)
+        AppsFlyerLib.getInstance().init(appsDevKey, conversionDataListener, activity)
+        AppsFlyerLib.getInstance().start(activity)
     }
 
     override fun onFalseCode(int: Int) {
